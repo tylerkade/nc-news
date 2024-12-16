@@ -1,0 +1,33 @@
+html {
+    border: greenyellow solid 2px;
+}
+
+body {
+    margin: 10px;
+    border: blue solid 2px;
+}
+
+#root {
+    margin: 10px;
+    border: red solid 2px;
+}
+
+header {
+    margin: 10px;
+    border:green solid 2px;
+}
+
+.navbar {
+    margin: 10px;
+    border: purple solid 2px
+}
+
+.navbar-list {
+    margin: 10px;
+    border: pink solid 2px
+}
+
+.navbar-item {
+    margin: 10px;
+    border: rgb(153, 110, 117) solid 2px
+}

@@ -18,4 +18,11 @@ const getArticleById = (article_id) => {
   });
 };
 
-export { getArticles, getArticleById };
+const getCommentsByArticleId = (article_id) => {
+  const url = `/articles/${article_id}/comments`;
+  return api.get(url).then(({ data }) => {
+    return data.comments;
+  });
+};
+
+export { getArticles, getArticleById, getCommentsByArticleId };

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getArticleById } from "../../api";
 
+import Comments from "./Comments";
+
 import arrow from "../icons/arrow.svg";
 
 import "../css/Article.css";
@@ -50,7 +52,9 @@ const Article = () => {
       <div className="articleBody">
         <h4>{article.body}</h4>
       </div>
-      <div className="articleComments">[Comments WIP]</div>
+      <div className="articleComments">
+        <Comments article_id={article.article_id}/>
+      </div>
       <div className="addComment">[Add comment WIP]</div>
     </div>
   );

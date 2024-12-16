@@ -71,3 +71,12 @@ header {
     margin: 10px;
     border: rgb(50, 214, 255) solid 2px
 }
+
+.comments-list {
+    margin: 10px;
+    border: rgb(50, 255, 170) solid 2px
+}
+
+.comment {
+    border: rgb(90, 196, 4) solid 2px
+}

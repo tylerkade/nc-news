@@ -31,3 +31,43 @@ header {
     margin: 10px;
     border: rgb(153, 110, 117) solid 2px
 }
+
+.article-list {
+    margin: 10px;
+    border: rgb(235, 180, 189) solid 2px
+}
+
+.article-card {
+    margin: 10px;
+    border: rgb(87, 224, 105) solid 2px
+}
+
+.articleImage {
+    margin: 10px;
+    border: rgb(255, 157, 157) solid 2px
+}
+
+.articleImage img {
+    margin: 10px;
+    border: rgb(36, 190, 106) solid 2px
+}
+
+.articleData {
+    margin: 10px;
+    border: rgb(245, 75, 217) solid 2px
+}
+
+.articleBody {
+    margin: 10px;
+    border: rgb(190, 92, 12) solid 2px
+}
+
+.articleComments {
+    margin: 10px;
+    border: rgb(0, 175, 23) solid 2px
+}
+
+.addComment {
+    margin: 10px;
+    border: rgb(50, 214, 255) solid 2px
+}

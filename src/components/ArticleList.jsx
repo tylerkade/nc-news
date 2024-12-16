@@ -17,6 +17,7 @@ const ArticleList = () => {
         setArticles(articles);
         setIsLoading(false);
         if (articles.length === 0) {
+          return <p>Error</p>;
         }
       })
       .catch(() => {
@@ -28,14 +29,11 @@ const ArticleList = () => {
     return <div role="alert">Loading Articles...</div>;
   }
 
-  // console.log(articles);
-  
-
   return (
     <>
       <ul className="article-list">
         {articles.map((article) => {
-          return <ArticleCard key={article.article_id} article={article}/>;
+          return <ArticleCard key={article.article_id} article={article} />;
         })}
       </ul>
     </>

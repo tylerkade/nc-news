@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import ArticleList from "./components/ArticleList";
+import Articles from "./components/Articles";
+import Article from "./components/Article";
 
 // CSS
 import "./css/App.css";
@@ -16,7 +17,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/articles" element={<ArticleList />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:topic/:article_id" element={<Article />} />
       </Routes>
     </div>
   );

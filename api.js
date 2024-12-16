@@ -5,10 +5,17 @@ const api = axios.create({
 });
 
 const getArticles = () => {
-  let url = "/articles";
+  const url = "/articles";
   return api.get(url).then(({ data }) => {
     return data.articles;
   });
 };
 
-export { getArticles };
+const getArticleById = (article_id) => {
+  const url = `/articles/${article_id}`;
+  return api.get(url).then(({ data }) => {
+    return data.article;
+  });
+};
+
+export { getArticles, getArticleById };

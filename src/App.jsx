@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
+import Topics from "./components/Topics";
 import Error from "./components/Error";
 
 // CSS
@@ -20,6 +21,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:topic/:article_id" element={<Article />} />
+        <Route path="/topics" element={<Topics />} />
+        <Route path="/articles/:topic" element={<Articles />} />
         <Route
           path="*"
           element={

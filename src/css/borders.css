@@ -90,3 +90,31 @@ header {
     border-radius: 15px;
     border: rgb(14, 188, 231) solid 2px
 }
+
+.list {
+    margin: 15px;
+    border: rgb(31, 126, 78) solid 2px
+}
+
+.card {
+    margin: 15px;
+    border: rgb(223, 209, 12) solid 2px
+}
+
+.home-button {
+    border: rgb(219, 0, 219) solid 2px
+}
+
+.burger-menu {
+    margin: 15px;
+    border: rgb(255, 150, 255) solid 2px
+}
+
+.navbar-links {
+    margin: 15px;
+    border: rgb(219, 0, 219) solid 2px
+}
+
+.error-display {
+    border: red solid 2px
+}

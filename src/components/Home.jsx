@@ -2,7 +2,7 @@ import "../css/Home.css";
 
 function Home() {
   return (
-    <header id="welcome">
+    <header id="Home">
       <div className="border-text">
         <h2>Home page under construction</h2>
       </div>

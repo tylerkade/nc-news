@@ -1,5 +1,3 @@
-import CommentForm from "./CommentForm";
-
 const CommentCard = ({ comments }) => {
   return (
     <>

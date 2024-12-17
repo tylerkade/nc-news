@@ -3,16 +3,23 @@ import VotingHandler from "./VotingHandler";
 
 import "../css/ArticleContent.css";
 import "../css/VotingArrows.css";
+import Error from "./Error";
 
 const ArticleContents = ({ article, upvote, downvote }) => {
   const [votes, setVotes] = useState(article.votes);
   const [activeVote, setActiveVote] = useState(null);
+  const [error, setError] = useState(false);
 
   const handleUpVote = () => {
+    setError(false);
     if (activeVote === "up") {
-      VotingHandler(article.article_id, -1).catch(() => {
-        setVotes((currVotes) => currVotes + 1);
-      });
+      VotingHandler(article.article_id, -1)
+        .then(() => setActiveVote(null))
+        .catch(() => {
+          setVotes((currVotes) => currVotes + 1);
+          setActiveVote(null);
+          setError(true);
+        });
 
       setVotes((currVotes) => currVotes - 1);
       setActiveVote(null);
@@ -20,6 +27,8 @@ const ArticleContents = ({ article, upvote, downvote }) => {
       const adjustment = activeVote === "down" ? 2 : 1;
       VotingHandler(article.article_id, adjustment).catch(() => {
         setVotes((currVotes) => currVotes - adjustment);
+        setActiveVote(null);
+        setError(true);
       });
 
       setVotes((currVotes) => currVotes + adjustment);
@@ -28,16 +37,24 @@ const ArticleContents = ({ article, upvote, downvote }) => {
   };
 
   const handleDownVote = () => {
+    setError(false);
     if (activeVote === "down") {
-      VotingHandler(article.article_id, 1).catch(() => {
-        setVotes((currVotes) => currVotes - 1);
-      });
+      VotingHandler(article.article_id, 1)
+        .then(() => setActiveVote(null))
+        .catch(() => {
+          setVotes((currVotes) => currVotes - 1);
+          setActiveVote(null);
+          setError(true);
+        });
+
       setVotes((currVotes) => currVotes + 1);
       setActiveVote(null);
     } else {
       const adjustment = activeVote === "up" ? -2 : -1;
       VotingHandler(article.article_id, adjustment).catch(() => {
         setVotes((currVotes) => currVotes - adjustment);
+        setActiveVote(null);
+        setError(true);
       });
       setVotes((currVotes) => currVotes + adjustment);
       setActiveVote("down");
@@ -70,6 +87,11 @@ const ArticleContents = ({ article, upvote, downvote }) => {
               className="vote-arrows"
             />
           </button>
+          {error && (
+            <Error
+              error={{ status: 503, statusText: "Unable to process vote." }}
+            />
+          )}
         </h4>
       </div>
       <div className="articleImage">

@@ -80,3 +80,13 @@ header {
 .comment {
     border: rgb(90, 196, 4) solid 2px
 }
+
+.comment-form {
+    border: rgb(90, 196, 4) solid 2px
+}
+
+.comment-form-group {
+    margin: 15px;
+    border-radius: 15px;
+    border: rgb(14, 188, 231) solid 2px
+}

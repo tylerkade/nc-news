@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
+import Error from "./components/Error";
 
 // CSS
 import "./css/App.css";
@@ -19,6 +20,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:topic/:article_id" element={<Article />} />
+        <Route
+          path="*"
+          element={
+            <Error error={{ status: 404, statusText: "Invalid page" }} />
+          }
+        />
       </Routes>
     </div>
   );

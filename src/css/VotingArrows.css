@@ -1,0 +1,37 @@
+.vote-arrows {
+    height: 40px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+#up-arrow-active {
+    filter: invert(75%) sepia(100%) saturate(9000%) hue-rotate(90deg) brightness(100%) contrast(100%);
+}
+
+#down-arrow-active {
+    filter: invert(15%) sepia(96%) saturate(4000%) hue-rotate(-19deg) brightness(100%) contrast(96%);
+}
+
+#upvote-button {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+
+#downvote-button {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+
+#upvote-button:hover .vote-arrows {
+    filter: invert(70%) sepia(100%) saturate(9000%) hue-rotate(90deg) brightness(100%) contrast(100%);
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+#downvote-button:hover .vote-arrows {
+    filter: invert(50%) sepia(96%) saturate(4000%) hue-rotate(-19deg) brightness(100%) contrast(96%);
+    cursor: pointer;
+    transform: scale(1.2);
+}

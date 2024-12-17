@@ -1,4 +1,4 @@
-.container {
+.article-container {
     margin: 25px;
     display: grid;
     grid-template-columns: 40% 30% 30%;
@@ -46,18 +46,4 @@
 
 .addComment {
     grid-area: addComment;
-}
-
-
-.vote-arrows {
-    height: 40px;
-}
-
-#up-arrow {
-    transform: rotate(180deg);
-    background-color: green;
-}
-
-#down-arrow {
-    background-color: red;
 }

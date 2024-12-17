@@ -11,7 +11,8 @@ const ArticleCard = ({ article }) => {
           By {article.author}, published on {date}
         </h4>
         <h5>
-          {article.topic} | comments: {article.comment_count}
+          Topic: {article.topic} | comments: {article.comment_count} | Votes:{" "}
+          {article.votes}
         </h5>
       </li>
     </div>

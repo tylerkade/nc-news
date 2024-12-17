@@ -25,4 +25,16 @@ const getCommentsByArticleId = (article_id) => {
   });
 };
 
-export { getArticles, getArticleById, getCommentsByArticleId };
+const patchArticleVotes = (article_id, vote) => {
+  const url = `/articles/${article_id}`;
+  return api.patch(url, { inc_votes: vote }).then(({ data }) => {
+    return data.article.votes;
+  });
+};
+
+export {
+  getArticles,
+  getArticleById,
+  getCommentsByArticleId,
+  patchArticleVotes,
+};

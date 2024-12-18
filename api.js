@@ -4,11 +4,21 @@ const api = axios.create({
   baseURL: "https://my-nc-news-t13l.onrender.com/api",
 });
 
-const getArticles = (topic) => {
+const getArticles = ({ topic, sort_by, order }) => {
   let endpoint = "/articles";
+
   if (topic) {
     endpoint = endpoint + `?topic=${topic}`;
   }
+
+  if (sort_by) {
+    endpoint += `${topic ? "&" : "?"}sort_by=${sort_by}`;
+  }
+
+  if (order) {
+    endpoint += `${sort_by || topic ? "&" : "?"}order=${order}`;
+  }
+
   return api.get(endpoint).then(({ data }) => {
     return data.articles;
   });
@@ -16,9 +26,14 @@ const getArticles = (topic) => {
 
 const getArticleById = (article_id) => {
   const endpoint = `/articles/${article_id}`;
-  return api.get(endpoint).then(({ data }) => {
-    return data.article;
-  });
+  return api
+    .get(endpoint)
+    .then(({ data }) => {
+      return data.article;
+    })
+    .catch((err) => {
+      return err;
+    });
 };
 
 const getCommentsByArticleId = (article_id) => {

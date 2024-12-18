@@ -37,5 +37,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-let test = 1;

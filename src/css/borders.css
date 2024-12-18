@@ -118,3 +118,35 @@ header {
 .error-display {
     border: red solid 2px
 }
+
+#user-profile {
+    margin: 15px;
+    border: rgb(0, 89, 255) solid 2px
+}
+
+.profile-container {
+    border: rgb(85, 229, 255) solid 2px
+}
+
+.account-username-header {
+    border: rgb(130, 52, 255) solid 2px
+}
+
+.account-details {
+    margin: 15px;
+    border: rgb(18, 163, 5) solid 2px
+}
+
+.profile-picture-box {
+    margin: 15px;
+    border: rgb(207, 182, 247) solid 2px
+}
+
+.profile-picture {
+    margin: 15px;
+    border: rgb(255, 37, 182) solid 2px
+}
+
+.logout-button {
+    border: rgb(250, 30, 30) solid 2px
+}

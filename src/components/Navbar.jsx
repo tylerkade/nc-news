@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 import "../css/Navbar.css";
 
 function Navbar() {
+  const { user } = useContext(UserContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -29,7 +31,9 @@ function Navbar() {
           <a href="/topics">Topics</a>
         </li>
         <li>
-          <a href="/account/login">Login</a>
+          <a href={user && user.username ? `/account/` : "/account/login"}>
+            {user && user.username ? "User" : "Login"}
+          </a>
         </li>
       </ul>
     </nav>

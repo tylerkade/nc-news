@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react";
-
 import CommentCard from "./CommentCard";
-
-import { getCommentsByArticleId } from "../../api";
 
 import "../css/Comments.css";
 
-const Comments = ({ comments }) => {
+const Comments = ({ comments, fetchComments }) => {
   return (
     <>
       <ul className="comments-list">
-        <CommentCard comments={comments} />
+        <CommentCard comments={comments} fetchComments={fetchComments}/>
       </ul>
     </>
   );

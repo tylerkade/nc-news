@@ -7,7 +7,7 @@
     text-align: left;
 }
 
-.comment {
+.comment, .comment-deleting {
     background-color: #4e4e4e;
     border-radius: 15px;
     padding-left: 10px;
@@ -20,4 +20,19 @@
 
 h4 {
     margin: 0px;
+}
+
+.comment-delete {
+    display:inline;
+    flex: content;
+    color: red;
+    cursor: pointer;
+}
+
+.comment-deleting {
+    opacity: 50%;
+}
+
+.login-message {
+    padding-top: 15px;
 }

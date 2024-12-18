@@ -28,7 +28,10 @@ The site contains 4 main navigable pages, `Home`, `All Articles`, `Topics`, and 
 
 ### Backend repo
 
-<a href="https://my-nc-news-t13l.onrender.com/api" target="_blank" rel="noopener noreferrer">Backend NC News</a>
+<a href="https://github.com/tylerkade/my-nc-news" target="_blank" rel="noopener noreferrer">Backend NC News</a>
+
+### Backend hosted API
+<a href="https://my-nc-news-t13l.onrender.com/api" target="_blank" rel="noopener noreferrer">API</a>
 
 ## Versions
 

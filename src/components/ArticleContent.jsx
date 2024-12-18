@@ -64,13 +64,15 @@ const ArticleContents = ({ article, upvote, downvote }) => {
   const date = new Date(article.created_at).toLocaleString();
   return (
     <>
-      <div className="articleData">
+      <div className="articleTitle">
         <h2>{article.title}</h2>
+      </div>
+      <div className="articleData">
         <h3>in {article.topic}</h3>
         <h3>By {article.author}</h3>
         <h3>Published on {date}</h3>
         <h4>Votes: {votes}</h4>
-        <h4>
+        <div className="voting buttons">
           <button id="upvote-button" onClick={handleUpVote}>
             <img
               src={upvote}
@@ -92,10 +94,10 @@ const ArticleContents = ({ article, upvote, downvote }) => {
               error={{ status: 503, statusText: "Unable to process vote." }}
             />
           )}
-        </h4>
+        </div>
       </div>
       <div className="articleImage">
-        <img src={article.article_img_url} />
+        <img src={article.article_img_url} alt={article.title} />
       </div>
       <div className="articleBody">
         <h4>{article.body}</h4>

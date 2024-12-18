@@ -44,6 +44,7 @@ const ArticleList = () => {
 
   return (
     <>
+    <h2>Articles</h2>
       <ul className="list">
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;

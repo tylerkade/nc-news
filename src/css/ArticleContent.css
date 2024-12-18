@@ -2,13 +2,11 @@
     margin: 25px;
     display: grid;
     grid-template-columns: 40% 30% 30%;
-    /* grid-template-columns: 1fr 1fr 1fr; */
-    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
-    /* grid-template-rows: 30% 30% 30% 10%; */
+    grid-template-rows: 0fr 1fr 0fr;
     grid-auto-columns: 1fr;
     gap: 5px 5px;
     grid-template-areas: 
-    "articleImage articleData articleData"
+    "articleImage articleTitle articleTitle"
     "articleImage articleData articleData"
     "articleBody articleBody articleBody"
     "addComment addComment addComment"
@@ -20,14 +18,21 @@
     border-radius: 15px;
     grid-area: articleImage;
     border-radius: 15px;
-    margin-right: 10px;
+    width: 100%;
 }
 
 .articleImage img {
+    box-sizing: border-box;
     background-color: #333;
     padding: 15px;
     border-radius: 15px;
     max-width: 100%;
+}
+
+.articleTitle {
+    padding: 15px;
+    max-width: 100%;
+    grid-area: articleTitle;
 }
 
 .articleData {
@@ -49,4 +54,37 @@
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+@media (max-width: 760px) {
+    .article-container {
+        margin: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .articleTitle {
+        order: 1;
+    }
+    
+    .articleImage {
+        order: 2;
+    }
+
+    .articleData {
+        order: 3;
+    }
+    
+    .articleBody {
+        order: 4;
+    }
+
+    .addComment {
+        order: 5;
+    }
+
+    .articleComments {
+        order: 6;
+    }
+
 }

@@ -26,14 +26,9 @@ const getArticles = ({ topic, sort_by, order }) => {
 
 const getArticleById = (article_id) => {
   const endpoint = `/articles/${article_id}`;
-  return api
-    .get(endpoint)
-    .then(({ data }) => {
-      return data.article;
-    })
-    .catch((err) => {
-      return err;
-    });
+  return api.get(endpoint).then(({ data }) => {
+    return data.article;
+  });
 };
 
 const getCommentsByArticleId = (article_id) => {
@@ -50,16 +45,11 @@ const patchArticleVotes = (article_id, vote) => {
   });
 };
 
-const addAComment = (article_id, comment) => {
+const addComment = (article_id, comment) => {
   const endpoint = `/articles/${article_id}/comments`;
-  return api
-    .post(endpoint, comment)
-    .then(({ data }) => {
-      return data.comment;
-    })
-    .catch((err) => {
-      return err;
-    });
+  return api.post(endpoint, comment).then(({ data }) => {
+    return data.comment;
+  });
 };
 
 const getTopics = () => {
@@ -69,11 +59,33 @@ const getTopics = () => {
   });
 };
 
+const getUsers = () => {
+  const endpoint = "/users";
+  return api.get(endpoint).then(({ data }) => {
+    return data.users;
+  });
+};
+
+const getUsersByUsername = (username) => {
+  const endpoint = `/users/${username}`;
+  return api.get(endpoint).then(({ data }) => {
+    return data.user;
+  });
+};
+
+const deleteCommentById = (id) => {
+  const endpoint = `/comments/${id}`;
+  return api.delete(endpoint);
+};
+
 export {
   getArticles,
   getArticleById,
   getCommentsByArticleId,
   patchArticleVotes,
-  addAComment,
+  addComment,
   getTopics,
+  getUsers,
+  getUsersByUsername,
+  deleteCommentById,
 };

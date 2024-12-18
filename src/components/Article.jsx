@@ -22,28 +22,30 @@ const Article = () => {
     setIsLoading(true);
     getArticleById(article_id)
       .then((article) => {
-        let { response, status } = article;
-
-        if (response) {
-          setError({ status: status, statusText: response.data.msg });
-          setIsLoading(false);
-          return;
-        } else {
-          setArticle(article);
-          setIsLoading(false);
-        }
-      })
-      .catch(() => {
+        setArticle(article);
         setIsLoading(false);
+      })
+      .catch((err) => {
+        const {
+          response: { data: { msg } = {} },
+          status,
+        } = err;
+        setError({ status: status, statusText: msg });
+        setIsLoading(false);
+        return;
       });
   }, [article_id]);
 
-  useEffect(() => {
+  const fetchComments = () => {
     if (article && article.article_id) {
       getCommentsByArticleId(article.article_id).then((fetchedComments) => {
         setComments(fetchedComments);
       });
     }
+  };
+
+  useEffect(() => {
+    fetchComments();
   }, [article]);
 
   const updateComments = (newComment) => {
@@ -62,7 +64,12 @@ const Article = () => {
     <div className="article-container">
       <ArticleContents article={article} upvote={upvote} downvote={downvote} />
       <div className="articleComments">
-        <Comments upvote={upvote} downvote={downvote} comments={comments} />
+        <Comments
+          upvote={upvote}
+          downvote={downvote}
+          comments={comments}
+          fetchComments={fetchComments}
+        />
       </div>
       <div className="addComment">
         <CommentForm

@@ -1,11 +1,10 @@
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, Link } from "react-router";
 import { useState } from "react";
 
 import "../css/SortingButtons.css";
 
 const SortingButtons = () => {
   const location = useLocation();
-  const navigate = useNavigate();
 
   const currentParams = new URLSearchParams(location.search);
   const sort_by = currentParams.get("sort_by") || "created_at";
@@ -13,16 +12,16 @@ const SortingButtons = () => {
 
   const [isSort_byOpen, setIsSort_byOpen] = useState(false);
 
-  const handleSort_byChange = (newSort_by) => {
-    currentParams.set("sort_by", newSort_by);
-    navigate({ search: currentParams.toString() });
-    setIsSort_byOpen(false);
+  const sortLink = (newSort_by) => {
+    const params = new URLSearchParams(location.search);
+    params.set("sort_by", newSort_by);
+    return `?${params.toString()}`;
   };
 
   const toggleOrder = () => {
     const newOrder = order === "ASC" ? "DESC" : "ASC";
     currentParams.set("order", newOrder);
-    navigate({ search: currentParams.toString() });
+    return `?${currentParams.toString()}`;
   };
 
   const toggleSortByDropdown = () => {
@@ -37,32 +36,20 @@ const SortingButtons = () => {
         </button>
         {isSort_byOpen && (
           <div className="dropdown-options">
-            <a href="#" onClick={() => handleSort_byChange("created_at")}>
-              Published date
-            </a>
-            <a href="#" onClick={() => handleSort_byChange("article_id")}>
-              Article ID
-            </a>
-            <a href="#" onClick={() => handleSort_byChange("title")}>
-              Title
-            </a>
-            <a href="#" onClick={() => handleSort_byChange("topic")}>
-              Topic
-            </a>
-            <a href="#" onClick={() => handleSort_byChange("author")}>
-              Author
-            </a>
-            <a href="#" onClick={() => handleSort_byChange("votes")}>
-              Votes
-            </a>
-            <a href="#" onClick={() => handleSort_byChange("comment_count")}>
-              Comment amount
-            </a>
+            <Link to={sortLink("created_at")}>Published date</Link>
+            <Link to={sortLink("article_id")}>Article ID</Link>
+            <Link to={sortLink("title")}>Title</Link>
+            <Link to={sortLink("topic")}>Topic</Link>
+            <Link to={sortLink("author")}>Author</Link>
+            <Link to={sortLink("votes")}>Votes</Link>
+            <Link to={sortLink("comment_count")}>Comment amount</Link>
           </div>
         )}
       </div>
       <div className="dropdown">
-        <button onClick={toggleOrder}>Order: {order}</button>
+        <Link to={toggleOrder()}>
+          <button>Order: {order}</button>
+        </Link>
       </div>
     </div>
   );

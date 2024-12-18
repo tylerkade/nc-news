@@ -4,6 +4,9 @@
     margin: 15px;
     padding-bottom: 15px;
     padding-top: 1px;
+    width: 100%;
+    box-sizing: border-box;
+
 }
 
 .comment-form-group {
@@ -12,6 +15,7 @@
     align-items: center;
     padding: 5px;
     border-radius: 15px;
+    width: 100%;
 }
 
 .comment-form-group label {
@@ -19,15 +23,12 @@
     margin-bottom: 5px;
 }
 
-#username {
-    max-width: 200px;
-    min-width: 200px;
-}
-
 #body {
-    max-width: 200px;
+    width: 85%;
     min-width: 200px;
     height: 64px;
     min-height: 1rem;
     max-height: 300px;
+    box-sizing: border-box;
+    resize: vertical;
 }

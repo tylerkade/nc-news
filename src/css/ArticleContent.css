@@ -46,4 +46,7 @@
 
 .addComment {
     grid-area: addComment;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

@@ -1,10 +1,23 @@
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+
 import "../css/Home.css";
 
 function Home() {
+  const { user } = useContext(UserContext);
+
   return (
     <header id="Home">
       <div className="border-text">
-        <h2>Home page under construction</h2>
+        {user && user.username ? (
+          <>
+            <h2>Welcome, {user.username}</h2>
+          </>
+        ) : (
+          <>
+            <h2>Home page under construction</h2>
+          </>
+        )}
       </div>
     </header>
   );

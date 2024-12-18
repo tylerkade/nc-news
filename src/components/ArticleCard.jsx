@@ -13,7 +13,7 @@ const ArticleCard = ({ article }) => {
         </h4>
         <h5>
           Topic: {article.topic} | comments: {article.comment_count} | Votes:{" "}
-          {article.votes}
+          {article.votes} | ID: {article.article_id}
         </h5>
       </li>
     </a>

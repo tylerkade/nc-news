@@ -1,7 +1,13 @@
 import ArticleList from "./ArticleList";
+import SortingButtons from "./SortingButtons";
 
 const Articles = () => {
-  return <ArticleList />;
+  return (
+    <>
+      <SortingButtons />
+      <ArticleList />
+    </>
+  );
 };
 
 export default Articles;

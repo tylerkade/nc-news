@@ -5,6 +5,7 @@ import { getArticleById, getCommentsByArticleId } from "../../api";
 import ArticleContents from "./ArticleContent";
 import CommentForm from "./CommentForm";
 import Comments from "./Comments";
+import Error from "./Error";
 
 import upvote from "../icons/upvote.svg";
 import downvote from "../icons/downvote.svg";
@@ -13,14 +14,24 @@ const Article = () => {
   const [article, setArticle] = useState([]);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
+    setError(null);
     setIsLoading(true);
     getArticleById(article_id)
       .then((article) => {
-        setArticle(article);
-        setIsLoading(false);
+        let { response, status } = article;
+
+        if (response) {
+          setError({ status: status, statusText: response.data.msg });
+          setIsLoading(false);
+          return;
+        } else {
+          setArticle(article);
+          setIsLoading(false);
+        }
       })
       .catch(() => {
         setIsLoading(false);
@@ -41,6 +52,10 @@ const Article = () => {
 
   if (isLoading) {
     return <div role="alert">Loading Article...</div>;
+  }
+
+  if (error) {
+    return <Error error={error} />;
   }
 
   return (

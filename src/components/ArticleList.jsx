@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
 import { getArticles } from "../../api";
+import { useLocation, useParams } from "react-router";
 
 import ArticleCard from "./ArticleCard";
+import Error from "./Error";
 
 import "../css/Card.css";
-import { useParams } from "react-router";
-import Error from "./Error";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const location = useLocation();
+  const currentParams = new URLSearchParams(location.search);
+
   const { topic } = useParams();
+  const sort_by = currentParams.get("sort_by");
+  const order = currentParams.get("order");
 
   useEffect(() => {
     setError(null);
     setIsLoading(true);
 
-    getArticles(topic)
+    getArticles({ topic, sort_by, order })
       .then((articles) => {
         setArticles(articles);
         setIsLoading(false);
@@ -31,7 +36,7 @@ const ArticleList = () => {
         setIsLoading(false);
         return;
       });
-  }, []);
+  }, [location.search]);
 
   if (isLoading) {
     return <div role="alert">Loading Articles...</div>;

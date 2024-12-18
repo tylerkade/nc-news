@@ -9,6 +9,7 @@ import Topics from "./components/Topics";
 import UserLogin from "./components/UserLogin";
 import UserProfile from "./components/UserProfile";
 import Error from "./components/Error";
+import Footer from "./components/Footer";
 
 // CSS
 import "./css/App.css";
@@ -34,6 +35,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

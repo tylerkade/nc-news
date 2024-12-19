@@ -1,59 +1,27 @@
-import { useLocation, Link, useNavigate } from "react-router";
-import { useState } from "react";
-
 import "../../css/SortingButtons.css";
 
-const SortingButtons = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+const SortingButtons = ({
+  totalArticles,
+  limit,
+  page,
+  sort_by,
+  order,
+  updateParams,
+}) => {
+  const totalPages = Math.ceil(totalArticles / limit);
 
-  const currentParams = new URLSearchParams(location.search);
-  const sort_by = currentParams.get("sort_by") || "created_at";
-  const order = currentParams.get("order") || "DESC";
-  const limit = currentParams.get("limit") || "10";
-
-  const [selectedSort, setSelectedSort] = useState(sort_by || "None");
-  const [selectedLimit, setSelectedLimit] = useState(limit || "None");
-
-  const sortLink = (newSort_by) => {
-    const params = new URLSearchParams(location.search);
-    params.set("sort_by", newSort_by);
-    return `?${params.toString()}`;
-  };
-
-  const toggleOrder = () => {
-    const newOrder = order === "ASC" ? "DESC" : "ASC";
-    currentParams.set("order", newOrder);
-    navigate(`?${currentParams.toString()}`);
-  };
-
-  const limitLink = (newLimit) => {
-    const params = new URLSearchParams(location.search);
-    params.set("limit", newLimit);
-    return `?${params.toString()}`;
-  };
-
-  const handleSortChange = (e) => {
-    const value = e.target.value;
-    setSelectedSort(value);
-    navigate(sortLink(value));
-  };
-
-  const handleLimitChange = (e) => {
-    const value = e.target.value;
-    setSelectedLimit(value);
-    navigate(limitLink(value));
-  };
+  const handleSortChange = (e) => updateParams({ sort_by: e.target.value });
+  const toggleOrder = () =>
+    updateParams({ order: order === "ASC" ? "DESC" : "ASC" });
+  const handleLimitChange = (e) =>
+    updateParams({ limit: e.target.value, p: 1 });
+  const handlePageChange = (e) => updateParams({ p: e.target.value });
 
   return (
     <div className="dropdown-container">
       <div className="dropdown">
         <label htmlFor="sort-dropdown">Sort by:</label>
-        <select
-          id="sort-dropdown"
-          value={selectedSort}
-          onChange={handleSortChange}
-        >
+        <select id="sort-dropdown" value={sort_by} onChange={handleSortChange}>
           <option value="created_at">Published date</option>
           <option value="article_id">Article ID</option>
           <option value="title">Title</option>
@@ -71,11 +39,7 @@ const SortingButtons = () => {
       </div>
       <div className="dropdown">
         <label htmlFor="limit-dropdown">Articles per page:</label>
-        <select
-          id="limit-dropdown"
-          value={selectedLimit}
-          onChange={handleLimitChange}
-        >
+        <select id="limit-dropdown" value={limit} onChange={handleLimitChange}>
           <option value="10">10</option>
           <option value="25">25</option>
           <option value="50">50</option>
@@ -83,17 +47,19 @@ const SortingButtons = () => {
         </select>
       </div>
       <div className="dropdown">
-        {/* <label htmlFor="page-dropdown">Page:</label>
-        <select
-          id="page-dropdown"
-          value={selectedLimit}
-          onChange={handleLimitChange}
-        >
-          <option value="10">10</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select> */}
+        <label htmlFor="page-dropdown">Page:</label>
+        <select id="page-dropdown" value={page} onChange={handlePageChange}>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <option key={i} value={i + 1}>
+              {i + 1}
+            </option>
+          ))}
+          {page > totalPages && (
+            <option key={page} value={page}>
+              {page}
+            </option>
+          )}
+        </select>
       </div>
     </div>
   );

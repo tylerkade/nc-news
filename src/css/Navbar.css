@@ -8,6 +8,7 @@
     position: relative;
     border-radius: 10px;
     z-index: 10;
+    height: 66px;
 }
 
 .home-button a {
@@ -27,6 +28,7 @@
     list-style: none;
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 .navbar-links li a {
@@ -34,6 +36,7 @@
     text-decoration: none;
     font-size: 1em;
     transition: background-color 0.3s;
+    padding: 5px;
 }
 
 .navbar-links li a:hover {
@@ -54,6 +57,35 @@
     margin: 3px 0;
     transition: transform 0.3s ease;
 }
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#navbar-logged-in-container {
+    display: flex;
+    align-items: center;
+}
+
+#navbar-pfp-container {
+    display: flex;
+    align-items: center;
+}
+
+#navbar-pfp {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: solid black 2px;
+    object-fit: cover;
+}
+
+#navbar-user {
+    margin-left: 10px;
+}
+
 
 @media screen and (max-width: 760px) {
     .burger-menu {
@@ -78,10 +110,4 @@
     .navbar-links.nav-active {
         display: flex;
     }
-}
-
-.navbar-links li a {
-    font-size: 1em;
-    padding: 5px;
-    text-align: center;
 }

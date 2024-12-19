@@ -10,17 +10,21 @@ const UserLogin = () => {
   //   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { loginUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    setIsLoading(true);
     getUsers()
       .then((existingUsers) => {
+        setIsLoading(false);
         setUsers(existingUsers);
       })
       .catch(() => {
+        setIsLoading(false);
         setUsers([]);
       });
   }, []);
@@ -80,6 +84,7 @@ const UserLogin = () => {
         </section>
       </form>
       <p>Valid usernames:</p>
+      {isLoading ? <>Loading Valid usernames...</> : <></>}
       {users.map((user) => {
         return <li key={user.username}>{user.username}</li>;
       })}

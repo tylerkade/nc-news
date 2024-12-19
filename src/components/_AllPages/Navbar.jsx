@@ -30,10 +30,23 @@ function Navbar() {
         <li>
           <a href="/topics">Topics</a>
         </li>
-        <li>
-          <a href={user && user.username ? `/account/` : "/account/login"}>
-            {user && user.username ? "User" : "Login"}
-          </a>
+        <li className="profile">
+          {user && user.username ? (
+            <a href="/account/">
+              <div id="navbar-logged-in-container">
+                <div id="navbar-pfp-container">
+                  <img
+                    id="navbar-pfp"
+                    src={user.avatar_url}
+                    alt="profile picture"
+                  />
+                </div>
+                <div id="navbar-user">{user.username}</div>
+              </div>
+            </a>
+          ) : (
+            <a href="/account/login">Login</a>
+          )}
         </li>
       </ul>
     </nav>

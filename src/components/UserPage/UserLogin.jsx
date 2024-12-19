@@ -1,13 +1,13 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { UserContext } from "../contexts/UserContext";
-import { getUsers, getUsersByUsername } from "../../api";
+import { UserContext } from "../../contexts/UserContext";
+import { getUsers, getUsersByUsername } from "../../../api";
 
-import "../css/UserLogin.css";
+import "../../css/UserLogin.css";
 
 const UserLogin = () => {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  //   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [users, setUsers] = useState([]);
 
@@ -57,7 +57,7 @@ const UserLogin = () => {
           required
           autoFocus
         />
-        <label htmlFor="password">Password</label>
+        {/* <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -66,10 +66,12 @@ const UserLogin = () => {
           autoComplete="current-password"
           onChange={(e) => setPassword(e.target.value)}
           required
-        />
+        /> */}
         {errorMsg ? <p className="error">{errorMsg}</p> : null}
         <section id="login-buttons">
-          <button type="submit" disabled={!username || !password}>
+          <button type="submit" disabled={!username}>
+            {" "}
+            {/* || !password}> */}
             Login
           </button>
           {/* <button type="submit" disabled={!username || !password}>
@@ -77,6 +79,10 @@ const UserLogin = () => {
           </button> */}
         </section>
       </form>
+      <p>Valid usernames:</p>
+      {users.map((user) => {
+        return <li key={user.username}>{user.username}</li>;
+      })}
     </section>
   );
 };

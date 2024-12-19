@@ -4,7 +4,7 @@ const api = axios.create({
   baseURL: "https://my-nc-news-t13l.onrender.com/api",
 });
 
-const getArticles = ({ topic, sort_by, order }) => {
+const getArticles = ({ topic, sort_by, order, limit }) => {
   let endpoint = "/articles";
 
   if (topic) {
@@ -19,8 +19,12 @@ const getArticles = ({ topic, sort_by, order }) => {
     endpoint += `${sort_by || topic ? "&" : "?"}order=${order}`;
   }
 
+  if (limit) {
+    endpoint += `${sort_by || topic || order ? "&" : "?"}limit=${limit}`;
+  }
+
   return api.get(endpoint).then(({ data }) => {
-    return data.articles;
+    return data;
   });
 };
 

@@ -20,3 +20,8 @@ button {
     width: auto;
     margin: 10px;
 }
+
+.login li {
+    display: flex;
+    flex-direction: column;
+}

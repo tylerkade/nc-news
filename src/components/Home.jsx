@@ -15,7 +15,8 @@ function Home() {
           </>
         ) : (
           <>
-            <h2>Home page under construction</h2>
+            <h2>Welcome to NC News</h2>
+            <p>Click 'All Articles' to view the news</p>
           </>
         )}
       </div>

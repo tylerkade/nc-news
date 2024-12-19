@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 
-import "../css/UserProfile.css";
-import Error from "./Error";
+import "../../css/UserProfile.css";
+import Error from "../_AllPages/Error";
 
 function UserProfile() {
   const { user, logoutUser } = useContext(UserContext);

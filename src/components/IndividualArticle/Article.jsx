@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getArticleById, getCommentsByArticleId } from "../../api";
+import { getArticleById, getCommentsByArticleId } from "../../../api";
 
 import ArticleContents from "./ArticleContent";
 import CommentForm from "./CommentForm";
 import Comments from "./Comments";
-import Error from "./Error";
+import Error from "../_AllPages/Error";
 
-import upvote from "../icons/upvote.svg";
-import downvote from "../icons/downvote.svg";
+import upvote from "../../icons/upvote.svg";
+import downvote from "../../icons/downvote.svg";
 
 const Article = () => {
   const [article, setArticle] = useState([]);

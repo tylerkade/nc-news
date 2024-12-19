@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
-import { deleteCommentById } from "../../api";
+import { UserContext } from "../../contexts/UserContext";
+import { deleteCommentById } from "../../../api";
 
 const CommentCard = ({ comments, fetchComments }) => {
   const { user } = useContext(UserContext);

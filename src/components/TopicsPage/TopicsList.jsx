@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { getTopics } from "../../api";
+import { getTopics } from "../../../api";
 
 import TopicCard from "./TopicCard";
 
-import "../css/Card.css";
+import "../../css/Card.css";
 
 const TopicsList = () => {
   const [topics, setTopics] = useState([]);
@@ -28,7 +28,6 @@ const TopicsList = () => {
 
   return (
     <>
-      <h2>Topics</h2>
       <ul className="list">
         {topics.map((topic) => {
           return <TopicCard key={topic.slug} topic={topic} />;

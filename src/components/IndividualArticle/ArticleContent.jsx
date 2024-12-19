@@ -1,9 +1,9 @@
 import { useState } from "react";
 import VotingHandler from "./VotingHandler";
 
-import "../css/ArticleContent.css";
-import "../css/VotingArrows.css";
-import Error from "./Error";
+import "../../css/ArticleContent.css";
+import "../../css/VotingArrows.css";
+import Error from "../_AllPages/Error";
 
 const ArticleContents = ({ article, upvote, downvote }) => {
   const [votes, setVotes] = useState(article.votes);

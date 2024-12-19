@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
-import { addComment } from "../../api";
-import Error from "./Error";
+import { UserContext } from "../../contexts/UserContext";
+import { addComment } from "../../../api";
+import Error from "../_AllPages/Error";
 
-import "../css/CommentForm.css";
+import "../../css/CommentForm.css";
 
 const CommentForm = ({ article_id, updateComments }) => {
   const { user } = useContext(UserContext);

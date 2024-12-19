@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { getArticles } from "../../api";
+import { getArticles } from "../../../api";
 import { useLocation, useParams } from "react-router";
 
 import ArticleCard from "./ArticleCard";
-import Error from "./Error";
+import Error from "../_AllPages/Error";
 
-import "../css/Card.css";
+import "../../css/Card.css";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
+  const [totalArticles, setTotalArticles] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -18,14 +19,16 @@ const ArticleList = () => {
   const { topic } = useParams();
   const sort_by = currentParams.get("sort_by");
   const order = currentParams.get("order");
+  const limit = currentParams.get("limit");
 
   useEffect(() => {
     setError(null);
     setIsLoading(true);
 
-    getArticles({ topic, sort_by, order })
-      .then((articles) => {
+    getArticles({ topic, sort_by, order, limit })
+      .then(({ articles, totalCount }) => {
         setArticles(articles);
+        setTotalArticles(totalCount);
         setIsLoading(false);
       })
       .catch(() => {
@@ -44,7 +47,6 @@ const ArticleList = () => {
 
   return (
     <>
-    <h2>Articles</h2>
       <ul className="list">
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;

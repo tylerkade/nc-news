@@ -1,6 +1,6 @@
 import CommentCard from "./CommentCard";
 
-import "../css/Comments.css";
+import "../../css/Comments.css";
 
 const Comments = ({ comments, fetchComments }) => {
   return (

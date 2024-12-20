@@ -17,8 +17,6 @@ const CommentCard = ({ comments, fetchComments }) => {
         fetchComments();
       })
       .catch((err) => {
-        console.log("in catch");
-
         setProcessingId(null);
         const { message } = err;
         if (message === "Network Error") {

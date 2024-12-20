@@ -47,7 +47,7 @@ const CommentForm = ({ article_id, updateComments }) => {
         } else {
           setError({
             status: 404,
-            statusText: "Unable to process comment.\n Check username is valid.",
+            statusText: "Unable to process comment.",
           });
         }
       });

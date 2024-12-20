@@ -17,6 +17,8 @@ const CommentCard = ({ comments, fetchComments }) => {
         fetchComments();
       })
       .catch((err) => {
+        console.log("in catch");
+
         setProcessingId(null);
         const { message } = err;
         if (message === "Network Error") {
@@ -36,6 +38,7 @@ const CommentCard = ({ comments, fetchComments }) => {
   if (error) {
     const { status, statusText } = error;
     alert(`${status}: ${statusText} \nUnable to process request.`);
+    setError(null);
   }
 
   return (

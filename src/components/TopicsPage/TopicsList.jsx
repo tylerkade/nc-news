@@ -24,7 +24,15 @@ const TopicsList = () => {
 
   return (
     <>
-      {isLoading ? <div role="alert">Loading Topics...</div> : <></>}
+      {isLoading ? (
+        <>
+          <div role="alert">Loading Topics...</div>
+          <div className="loader"></div>
+        </>
+      ) : (
+        <></>
+      )}
+
       <ul className="list">
         {topics.map((topic) => {
           return <TopicCard key={topic.slug} topic={topic} />;

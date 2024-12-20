@@ -53,7 +53,12 @@ const Article = () => {
   };
 
   if (isLoading) {
-    return <div role="alert">Loading Article...</div>;
+    return (
+      <>
+        <div role="alert">Loading Article...</div>
+        <div className="loader"></div>
+      </>
+    );
   }
 
   if (error) {

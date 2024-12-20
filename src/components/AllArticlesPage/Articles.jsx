@@ -64,7 +64,14 @@ const Articles = () => {
         updateParams={updateParams}
       />
       <h2>Articles</h2>
-      {isLoading ? <div role="alert">Loading Articles...</div> : <></>}
+      {isLoading ? (
+        <>
+          <div role="alert">Loading Articles...</div>
+          <div className="loader"></div>
+        </>
+      ) : (
+        <></>
+      )}
       {error ? <Error error={error} /> : <></>}
       <ArticleList articles={articles} />
     </>

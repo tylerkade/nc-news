@@ -11,6 +11,7 @@ const UserLogin = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { loginUser } = useContext(UserContext);
 
@@ -31,15 +32,18 @@ const UserLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     const exists = users.some((user) => {
       return user.username === username;
     });
     if (!exists) {
+      setIsSubmitting(false);
       setErrorMsg("User doesn't exist");
       return;
     }
     getUsersByUsername(username).then((data) => {
+      setIsSubmitting(false);
       setErrorMsg("");
       loginUser(data);
       navigate("/");
@@ -73,18 +77,33 @@ const UserLogin = () => {
         /> */}
         {errorMsg ? <p className="error">{errorMsg}</p> : null}
         <section id="login-buttons">
-          <button type="submit" disabled={!username}>
+          <button type="submit" disabled={!username || isSubmitting}>
             {" "}
             {/* || !password}> */}
             Login
           </button>
+          {isSubmitting ? (
+            <>
+              <p>Logging in...</p>
+              <div className="loader"></div>
+            </>
+          ) : (
+            <></>
+          )}
           {/* <button type="submit" disabled={!username || !password}>
             Register
           </button> */}
         </section>
       </form>
       <p>Valid usernames:</p>
-      {isLoading ? <>Loading Valid usernames...</> : <></>}
+      {isLoading ? (
+        <>
+          <p>Loading Valid usernames...</p>
+          <div className="loader"></div>
+        </>
+      ) : (
+        <></>
+      )}
       {users.map((user) => {
         return <li key={user.username}>{user.username}</li>;
       })}

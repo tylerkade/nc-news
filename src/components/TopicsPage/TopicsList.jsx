@@ -32,12 +32,13 @@ const TopicsList = () => {
       ) : (
         <></>
       )}
-
-      <ul className="list">
-        {topics.map((topic) => {
-          return <TopicCard key={topic.slug} topic={topic} />;
-        })}
-      </ul>
+      <nav aria-label="Topics">
+        <ul className="list">
+          {topics.map((topic) => {
+            return <TopicCard key={topic.slug} topic={topic} />;
+          })}
+        </ul>
+      </nav>
     </>
   );
 };

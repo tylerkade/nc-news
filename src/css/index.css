@@ -32,7 +32,7 @@ h1 {
   line-height: 1.1;
 }
 
-header {
+#website-title {
   background-color: #333;
   margin-bottom: 15px;
 }

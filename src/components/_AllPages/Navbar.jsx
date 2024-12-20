@@ -17,7 +17,17 @@ function Navbar() {
         <a href="/">Home</a>
       </div>
 
-      <div className="burger-menu" onClick={toggleMenu}>
+      <div
+        className="burger-menu"
+        onClick={toggleMenu}
+        onKeyDown={(e) => e.key === "Enter" && toggleMenu()}
+        role="button"
+        tabIndex="0"
+        aria-expanded={isMenuOpen}
+        aria-label={
+          isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+        }
+      >
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>

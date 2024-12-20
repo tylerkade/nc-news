@@ -41,7 +41,7 @@ const CommentCard = ({ comments, fetchComments }) => {
 
   return (
     <>
-      <div>
+      <article>
         {comments.map((comment) => {
           const { created_at, author, comment_id, body, votes } = comment;
           const date = new Date(created_at).toLocaleString();
@@ -74,7 +74,7 @@ const CommentCard = ({ comments, fetchComments }) => {
             </li>
           );
         })}
-      </div>
+      </article>
     </>
   );
 };

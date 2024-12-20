@@ -18,7 +18,7 @@ import "./css/App.css";
 function App() {
   return (
     <div id="main-content">
-      <a href="#header" className="skip-to-content-link">
+      <a href="#website-title" className="skip-to-content-link">
         Jump to top
       </a>
       <Header />

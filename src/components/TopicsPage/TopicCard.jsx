@@ -1,8 +1,9 @@
-import "../../css/Card.css";
+// import "../../css/Card.css";
+import "../../css/TopicCard.css";
 
 const TopicCard = ({ topic }) => {
   return (
-    <li className="card">
+    <li className="topic-card">
       <a
         href={`/articles/${topic.slug}`}
         title={`Get all articles in ${topic.slug}`}

@@ -31,7 +31,7 @@ function Home() {
       });
   }, []);
   // Bug: if multiple articles have the same number of votes, it
-  // will fetch and display all of them
+  // will fetch and display all of them - maybe a backend fix?
 
   return (
     <header id="Home">

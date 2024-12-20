@@ -4,28 +4,14 @@ const api = axios.create({
   baseURL: "https://my-nc-news-t13l.onrender.com/api",
 });
 
-const getArticles = ({ topic, sort_by, order, limit, page }) => {
-  let endpoint = "/articles";
+const getArticles = ({ topic, sort_by, order, limit, page, popular }) => {
+  const params = { topic, sort_by, order, limit, page, popular };
+  const queryString = Object.entries(params)
+    .filter(([_, value]) => value !== undefined && value !== null)
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&");
 
-  if (topic) {
-    endpoint = endpoint + `?topic=${topic}`;
-  }
-
-  if (sort_by) {
-    endpoint += `${topic ? "&" : "?"}sort_by=${sort_by}`;
-  }
-
-  if (order) {
-    endpoint += `${sort_by || topic ? "&" : "?"}order=${order}`;
-  }
-
-  if (limit) {
-    endpoint += `${sort_by || topic || order ? "&" : "?"}limit=${limit}`;
-  }
-
-  if (page) {
-    endpoint += `${sort_by || topic || order || limit ? "&" : "?"}p=${page}`;
-  }
+  const endpoint = `/articles${queryString ? `?${queryString}` : ""}`;
 
   return api.get(endpoint).then(({ data }) => {
     return data;

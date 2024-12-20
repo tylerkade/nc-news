@@ -60,6 +60,8 @@ const ArticleContents = ({ article, upvote, downvote }) => {
       setActiveVote("down");
     }
   };
+  // Need to add a feature that saves what you've voted on, as currently it
+  // resets when refreshing the page (the old vote is still added to db)
 
   const date = new Date(article.created_at).toLocaleString();
   return (

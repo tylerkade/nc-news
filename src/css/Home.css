@@ -2,3 +2,8 @@
     margin: 25px;
     border-radius: 15px;
 }
+
+.border-text {
+    display: flex;
+    flex-direction: column;
+}

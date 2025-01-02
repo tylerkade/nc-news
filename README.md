@@ -8,13 +8,13 @@ The purpose of this frontend is to provide a UI (user interface) to access data 
 
 The site contains 4 main navigable pages, `Home`, `All Articles`, `Topics`, and `Login`.
 
-`Home` currently doesn't contain anything, but the intention is to host the most popular article from each topic on this page.
+`Home` hosts the most popular (most upvoted) article from each topic.
 
-`All Articles` contains all of the articles in the database, showing 10 at a time by default. Clicking on an article will take you to it's page, containing its content and comments, in which you can add vote on the article, and leave a comment (provided you are logged in) and delete only the comments you've made.
+`All Articles` contains all of the articles in the database, showing 10 at a time by default. Clicking on an article will take you to its page, containing its content and comments. From there, you can vote on the article, leave a comment (provided you are logged in), and delete only the comments you've made.
 
-`Topics` contains all topics in the database, and clicking on one will display all articles with that topic.
+`Topics` lists all topics in the database. Clicking on a topic displays all articles associated with it.
 
-`Login` contains the login page which lets you login with a username that exists in the database, currently there is no passwords so anything will work. After loggin in, the `Login` button changes to a `User` button, in which takes you to the users profile housing their data, and the `Logout` button.
+`Login` provides access to the login page, where you can log in with any username that exists in the database. Currently, no password is required, so any input will work. After logging in, the `Login` button changes to a `User` button with the user's profile picture beside it. This button links to the users profile, which displays their data, as well as the `Logout` button.
 
 ## Local Installation Instructions
 
@@ -31,6 +31,7 @@ The site contains 4 main navigable pages, `Home`, `All Articles`, `Topics`, and 
 <a href="https://github.com/tylerkade/my-nc-news" target="_blank" rel="noopener noreferrer">Backend NC News</a>
 
 ### Backend hosted API
+
 <a href="https://my-nc-news-t13l.onrender.com/api" target="_blank" rel="noopener noreferrer">API</a>
 
 ## Versions

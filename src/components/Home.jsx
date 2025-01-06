@@ -45,7 +45,7 @@ function Home() {
             <h2>Welcome to NC News</h2>
           </>
         )}
-        <h3>Click 'All Articles' to view the all news</h3>
+        <h3>Click 'All Articles' to view all news</h3>
         <h3>Here are the most popular articles in each topic:</h3>
         {isLoading ? (
           <>
